@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blues.lin.mpauto.mapper.mpuser.MpUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.blues.lin.mpauto.vo.mpuser.MpUser">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="password" property="password" />
+        <result column="des" property="des" />
+        <result column="start_time" property="startTime" />
+        <result column="end_time" property="endTime" />
+        <result column="age" property="age" />
+    </resultMap>
+
+    <select id="selectMpOne" resultType="com.blues.lin.mpauto.vo.mpuser.MpUser">
+        SELECT id,name,password,des,start_time,end_time,age FROM mp_user
+    </select>
+
+    <select id="selectPageVo" resultType="com.blues.lin.mpauto.vo.mpuser.MpUser">
+        SELECT id,name,password,des,start_time,end_time,age FROM mp_user
+    </select>
+
+</mapper>
