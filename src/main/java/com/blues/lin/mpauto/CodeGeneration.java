@@ -22,6 +22,12 @@ public class CodeGeneration {
 
     static String parentPackage = "com.blues.lin.mpauto"; // 父包路径
 
+    static String tablePrefix = "mybatis_"; // 去除表前缀
+
+    static String fieldPrefix = ""; // 去除字段前缀
+
+    static boolean hasSubPackage = false; // 是否需要子包（如server.{subPackage}.***Server.java）
+
     //main函数
     public static void main(String[] args) {
 
@@ -54,6 +60,7 @@ public class CodeGeneration {
         // XML columList
         gc.setBaseColumnList(false);
 
+
         // 作者
         gc.setAuthor("linzg");
         gc.setSwagger2(true);
@@ -78,7 +85,7 @@ public class CodeGeneration {
         //密码
         dsc.setPassword("blues");
         //指定数据库
-        dsc.setUrl("jdbc:mysql://150.158.153.204:3306/mybatis_plus_db?useUnicode=true&useSSL=true");
+        dsc.setUrl("jdbc:mysql://150.158.153.204:3316/mybatis_plus_db?useUnicode=true&useSSL=true");
         autoGenerator.setDataSource(dsc);
 
         // 策略配置
@@ -97,21 +104,24 @@ public class CodeGeneration {
         strategy.setEntityLombokModel(true);
 
         //去除表前缀
-        strategy.setTablePrefix("");
+        strategy.setTablePrefix(tablePrefix);
         //去除字段前缀
-        strategy.setFieldPrefix("");
+        strategy.setFieldPrefix(fieldPrefix);
         autoGenerator.setStrategy(strategy);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
         //父包路径
         pc.setParent(parentPackage);
-        String subPackageName = StringUtils.underlineToCamel(tableName).toLowerCase();
-        pc.setController("api." + subPackageName);
-        pc.setService("service." + subPackageName);
-        pc.setServiceImpl("service." + subPackageName + ".impl");
-        pc.setMapper("mapper." + subPackageName);
-        pc.setEntity("vo." + subPackageName);
+        String subPackageName = "";
+        if (hasSubPackage) {
+            subPackageName = "." + StringUtils.underlineToCamel(tableName).toLowerCase();
+        }
+        pc.setController("api" + subPackageName);
+        pc.setService("service" + subPackageName);
+        pc.setServiceImpl("service" + subPackageName + ".impl");
+        pc.setMapper("mapper" + subPackageName);
+        pc.setEntity("entity" + subPackageName);
         pc.setXml("mapper" + subPackageName);
         autoGenerator.setPackageInfo(pc);
         // 执行生成
