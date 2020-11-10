@@ -25,16 +25,16 @@ import java.io.Serializable;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("mybatis_user_info")
-@Table("mybatis_user_info")
-@ApiModel(value="UserInfo对象", description="")
-public class UserInfo implements Serializable {
+@TableName("update_table_info")
+@Table("update_table_info")
+@ApiModel(value="UpdateTableInfo对象", description="")
+public class UpdateTableInfo implements Serializable {
 
     private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "主键")
     @TableId(value = "id", type = IdType.AUTO)
-    @Column(comment = "id", type = MySqlTypeConstant.INT, length = 12, isKey = true, isAutoIncrement = true)
+    @Column(length = 15, type = MySqlTypeConstant.INT, isAutoIncrement = true, isKey = true, comment = "id")
     private Integer id;
 
     @ApiModelProperty(value = "名字")
@@ -54,7 +54,8 @@ public class UserInfo implements Serializable {
     private String email;
 
     @ApiModelProperty(value = "年龄")
-    @Column(comment = "age", type = MySqlTypeConstant.INT, length = 6)
+    @Column(type = MySqlTypeConstant.INT, length = 5, comment = "age")
     private Integer age;
+
 
 }

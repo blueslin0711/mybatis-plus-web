@@ -46,7 +46,7 @@ public class CodeGeneration {
         gc.setOpen(false);
 
         //文件覆盖
-        gc.setFileOverride(true);
+        gc.setFileOverride(false);
 
         // 不需要ActiveRecord特性的请改为false
         gc.setActiveRecord(false);
@@ -58,7 +58,7 @@ public class CodeGeneration {
         gc.setBaseResultMap(true);
 
         // XML columList
-        gc.setBaseColumnList(false);
+        gc.setBaseColumnList(true);
 
 
         // 作者
@@ -81,11 +81,11 @@ public class CodeGeneration {
         dsc.setDbType(DbType.MYSQL);
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         //用户名
-        dsc.setUsername("blues");
+        dsc.setUsername("****");
         //密码
-        dsc.setPassword("blues");
+        dsc.setPassword("****");
         //指定数据库
-        dsc.setUrl("jdbc:mysql://150.158.153.204:3316/mybatis_plus_db?useUnicode=true&useSSL=true");
+        dsc.setUrl("jdbc:mysql://****/mybatis_plus_db?useUnicode=true&useSSL=true");
         autoGenerator.setDataSource(dsc);
 
         // 策略配置

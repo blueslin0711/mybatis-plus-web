@@ -1,6 +1,6 @@
 
 server:
-  port: 8090
+  port: 8080
 
 spring:
   datasource:
@@ -15,7 +15,7 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     auto-mapping-behavior: full
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath:com/blues/lin/mpauto/**/*Mapper.xml
+  mapper-locations: classpath:com/blues/lin/mpauto/**/*Mapper.xml,classpath*:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
   global-config:
     # 逻辑删除配置
     db-config:
@@ -23,3 +23,12 @@ mybatis-plus:
       logic-not-delete-value: 1
       # 删除后
       logic-delete-value: 0
+
+# mybatis actable配置
+actable:
+  table:
+    auto: none # create 每次都删 update 只更新不删数据 none 不做处理 add 只新增不修改
+  model:
+    pack: com.blues.lin.mpauto.entity
+  database:
+    type: mysql
